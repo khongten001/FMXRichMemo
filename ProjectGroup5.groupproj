@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{1F2583C1-4C61-4FBC-A2B9-5CECC64497AD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project35.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\ChatGPT\ChatGPT.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project35">
+        <MSBuild Projects="Project35.dproj"/>
+    </Target>
+    <Target Name="Project35:Clean">
+        <MSBuild Projects="Project35.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project35:Make">
+        <MSBuild Projects="Project35.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ChatGPT">
+        <MSBuild Projects="..\ChatGPT\ChatGPT.dproj"/>
+    </Target>
+    <Target Name="ChatGPT:Clean">
+        <MSBuild Projects="..\ChatGPT\ChatGPT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ChatGPT:Make">
+        <MSBuild Projects="..\ChatGPT\ChatGPT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project35;ChatGPT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project35:Clean;ChatGPT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project35:Make;ChatGPT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
